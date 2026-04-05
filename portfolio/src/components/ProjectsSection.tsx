@@ -277,11 +277,11 @@ const ProjectCard = ({ index, isExpanded, onPreviewImage, onToggleDescription, p
           </div>
 
           {visibleStack.length > 0 && (
-            <div className="mb-6 flex flex-wrap gap-2">
+            <div className="mb-6 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap">
               {visibleStack.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-border/80 bg-muted/20 px-3 py-1 text-xs font-medium text-muted-foreground"
+                  className="flex min-w-0 items-center justify-center rounded-full border border-border/80 bg-muted/20 px-2 py-2 text-center text-[10px] font-medium leading-tight text-muted-foreground sm:px-3 sm:py-1 sm:text-xs"
                 >
                   {item}
                 </span>
