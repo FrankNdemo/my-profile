@@ -142,12 +142,13 @@ REST_FRAMEWORK = {
 
 SESSION_COOKIE_NAME = "portfolio_admin_sessionid"
 SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SAMESITE = "Lax"
-CSRF_COOKIE_SAMESITE = "Lax"
+SESSION_COOKIE_SAMESITE = os.getenv("SESSION_COOKIE_SAMESITE", "Lax" if DEBUG else "None")
+CSRF_COOKIE_SAMESITE = os.getenv("CSRF_COOKIE_SAMESITE", "Lax" if DEBUG else "None")
+SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "false" if DEBUG else "true").lower() == "true"
+CSRF_COOKIE_SECURE = os.getenv("CSRF_COOKIE_SECURE", "false" if DEBUG else "true").lower() == "true"
 
 PORTFOLIO_ALLOWED_ORIGINS = [
     origin.strip()
     for origin in os.getenv("PORTFOLIO_ALLOWED_ORIGINS", "http://127.0.0.1:8080,http://localhost:8080").split(",")
     if origin.strip()
 ]
-
