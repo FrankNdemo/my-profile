@@ -41,6 +41,7 @@ const HeroSection = () => {
   const {
     content: { hero, contact },
   } = usePortfolio();
+  const mobileHeroBackgroundImage = "/rrro.jpeg";
   const visibleSpecialties = filterFilledStrings(hero.specialties);
   const showPrimaryCta = hasValue(hero.primaryCtaLabel) && hasValue(hero.primaryCtaHref);
   const showSecondaryCta = hasValue(hero.secondaryCtaLabel) && hasValue(hero.secondaryCtaHref);
@@ -189,6 +190,23 @@ const HeroSection = () => {
               </motion.div>
             )}
 
+            <div
+              className="pointer-events-none relative float-right mb-6 ml-4 h-[19.5rem] w-[43%] overflow-hidden rounded-[30px] md:hidden"
+              style={{
+                WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 14%, black 84%, transparent 100%)",
+                maskImage: "linear-gradient(180deg, transparent 0%, black 14%, black 84%, transparent 100%)",
+              }}
+            >
+              <img
+                src={mobileHeroBackgroundImage}
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full scale-[1.05] object-cover object-[60%_center] brightness-[0.36] contrast-[1.04] saturate-[0.9]"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,18,0.18)_0%,rgba(6,10,18,0.52)_42%,rgba(6,10,18,0.96)_100%),linear-gradient(270deg,rgba(6,10,18,0)_0%,rgba(6,10,18,0.58)_45%,rgba(6,10,18,0.94)_100%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(255,255,255,0.08),transparent_24%),radial-gradient(circle_at_25%_50%,rgba(6,10,18,0)_0%,rgba(6,10,18,0.56)_58%,rgba(6,10,18,0.98)_100%)]" />
+            </div>
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -239,7 +257,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.85 }}
-                className="mt-10 flex items-stretch gap-3 sm:flex-wrap sm:items-center sm:gap-4"
+                className="clear-both mt-10 flex items-stretch gap-3 sm:flex-wrap sm:items-center sm:gap-4"
               >
                 {showPrimaryCta && (
                   <a
