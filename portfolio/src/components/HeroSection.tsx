@@ -165,19 +165,20 @@ const HeroSection = () => {
           <div className="relative">
             <div className="pointer-events-none absolute inset-0 md:hidden">
               <div
-                className="absolute bottom-28 right-[-1.5rem] top-[6.75rem] w-[58%] overflow-hidden"
+                className="absolute bottom-24 right-[-2.75rem] top-[6.25rem] w-[62%] overflow-hidden"
                 style={{
                   WebkitMaskImage:
-                    "radial-gradient(78% 88% at 72% 48%, black 0%, black 54%, transparent 100%)",
-                  maskImage: "radial-gradient(78% 88% at 72% 48%, black 0%, black 54%, transparent 100%)",
+                    "radial-gradient(98% 112% at 74% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.96) 34%, rgba(0,0,0,0.72) 56%, rgba(0,0,0,0.32) 76%, transparent 100%)",
+                  maskImage:
+                    "radial-gradient(98% 112% at 74% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0.96) 34%, rgba(0,0,0,0.72) 56%, rgba(0,0,0,0.32) 76%, transparent 100%)",
                 }}
               >
                 <div
-                  className="absolute inset-0 scale-[1.08] bg-cover bg-[62%_center] bg-no-repeat brightness-[0.42] contrast-[1.02] saturate-[0.88]"
+                  className="absolute -inset-8 scale-[1.14] bg-cover bg-[64%_center] bg-no-repeat blur-[2px] brightness-[0.34] contrast-[1.04] saturate-[0.82]"
                   style={{ backgroundImage: `url(${mobileHeroBackgroundImage})` }}
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,10,18,0.98)_0%,rgba(6,10,18,0.9)_28%,rgba(6,10,18,0.52)_54%,rgba(6,10,18,0.62)_72%,rgba(6,10,18,0.96)_100%),linear-gradient(180deg,rgba(6,10,18,0.96)_0%,rgba(6,10,18,0.3)_20%,rgba(6,10,18,0.2)_70%,rgba(6,10,18,0.98)_100%)]" />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_28%,rgba(255,255,255,0.08),transparent_18%),radial-gradient(circle_at_82%_100%,rgba(6,10,18,0.9),transparent_42%)]" />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,10,18,1)_0%,rgba(6,10,18,0.95)_24%,rgba(6,10,18,0.58)_52%,rgba(6,10,18,0.5)_68%,rgba(6,10,18,0.88)_84%,rgba(6,10,18,1)_100%),linear-gradient(180deg,rgba(6,10,18,1)_0%,rgba(6,10,18,0.42)_18%,rgba(6,10,18,0.2)_48%,rgba(6,10,18,0.34)_76%,rgba(6,10,18,1)_100%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_26%,rgba(255,255,255,0.06),transparent_16%),radial-gradient(circle_at_86%_50%,rgba(6,10,18,0.18),transparent_32%),radial-gradient(circle_at_82%_100%,rgba(6,10,18,0.96),transparent_46%)]" />
               </div>
             </div>
 
