@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <rect width="1600" height="1000" fill="#0E1726"/>
+  <rect x="76" y="76" width="1448" height="848" rx="40" fill="url(#bg)" stroke="#C8A96B" stroke-opacity="0.28" stroke-width="2"/>
+  <rect x="150" y="180" width="1300" height="640" rx="26" fill="#121E31" stroke="#D7C39B" stroke-opacity="0.16"/>
+  <rect x="150" y="180" width="1300" height="72" rx="26" fill="#162438"/>
+  <circle cx="202" cy="216" r="10" fill="#C8A96B"/>
+  <circle cx="236" cy="216" r="10" fill="#6A8AA7"/>
+  <circle cx="270" cy="216" r="10" fill="#A26D52"/>
+  <rect x="210" y="322" width="388" height="234" rx="22" fill="#1A2B42"/>
+  <rect x="642" y="322" width="748" height="34" rx="17" fill="#D7C39B" fill-opacity="0.86"/>
+  <rect x="642" y="392" width="640" height="22" rx="11" fill="#6E7E94" fill-opacity="0.65"/>
+  <rect x="642" y="438" width="700" height="22" rx="11" fill="#6E7E94" fill-opacity="0.5"/>
+  <rect x="642" y="484" width="532" height="22" rx="11" fill="#6E7E94" fill-opacity="0.36"/>
+  <rect x="210" y="606" width="244" height="24" rx="12" fill="#C8A96B" fill-opacity="0.88"/>
+  <rect x="474" y="606" width="182" height="24" rx="12" fill="#365172"/>
+  <rect x="676" y="606" width="204" height="24" rx="12" fill="#365172"/>
+  <rect x="210" y="694" width="1180" height="2" fill="#D7C39B" fill-opacity="0.12"/>
+  <text x="800" y="858" fill="#F6F0E4" font-family="Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="4" text-anchor="middle">ADD PROJECT PREVIEW IMAGE</text>
+  <defs>
+    <linearGradient id="bg" x1="800" y1="76" x2="800" y2="924" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111D30"/>
+      <stop offset="1" stop-color="#0C1422"/>
+    </linearGradient>
+  </defs>
+</svg>

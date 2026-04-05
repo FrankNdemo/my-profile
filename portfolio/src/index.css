@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 10%;
+    --foreground: 38 35% 96%;
+
+    --card: 220 25% 14%;
+    --card-foreground: 38 35% 96%;
+
+    --popover: 220 24% 15%;
+    --popover-foreground: 38 35% 96%;
+
+    --primary: 38 48% 62%;
+    --primary-foreground: 220 30% 10%;
+
+    --secondary: 203 28% 58%;
+    --secondary-foreground: 220 30% 10%;
+
+    --muted: 219 20% 20%;
+    --muted-foreground: 215 14% 74%;
+
+    --accent: 25 46% 61%;
+    --accent-foreground: 220 30% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 219 18% 26%;
+    --input: 219 18% 22%;
+    --ring: 38 48% 62%;
+
+    --radius: 0.85rem;
+
+    /* Custom tokens */
+    --glow-primary: 0 18px 40px hsl(220 45% 8% / 0.22);
+    --glow-secondary: 0 18px 40px hsl(203 28% 20% / 0.18);
+    --glow-accent: 0 18px 40px hsl(25 46% 24% / 0.14);
+    
+    --gradient-primary: linear-gradient(135deg, hsl(38 48% 62%) 0%, hsl(25 46% 61%) 100%);
+    --gradient-dark: linear-gradient(180deg, hsl(220 30% 10%) 0%, hsl(222 28% 8%) 100%);
+    --gradient-card: linear-gradient(160deg, hsl(220 26% 16%) 0%, hsl(220 24% 12%) 100%);
+
+    --font-mono: 'Sora', sans-serif;
+    --font-sans: 'Manrope', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 8rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(circle at top left, hsl(38 48% 62% / 0.12), transparent 28%),
+      radial-gradient(circle at bottom right, hsl(203 28% 58% / 0.12), transparent 26%),
+      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(222 28% 8%) 100%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-mono);
+  }
+
+  section[id] {
+    scroll-margin-top: 8rem;
+  }
+
+  @media print {
+    html,
+    body {
+      background: white !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .cv-page-shell {
+      padding: 0 !important;
+      background: white !important;
+    }
+
+    .cv-print-controls {
+      display: none !important;
+    }
+
+    .cv-sheet {
+      width: 100% !important;
+      max-width: none !important;
+      min-height: auto !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      overflow: visible !important;
+    }
+
+    .cv-avoid-break {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
+}
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: var(--glow-primary);
+  }
+
+  .text-glow-secondary {
+    text-shadow: var(--glow-secondary);
+  }
+
+  .box-glow {
+    box-shadow: var(--glow-primary);
+  }
+
+  .box-glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(hsl(38 48% 62% / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(38 48% 62% / 0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .circuit-line {
+    background: linear-gradient(90deg, transparent 0%, hsl(38 48% 62% / 0.35) 50%, transparent 100%);
+    height: 1px;
+  }
+
+  .terminal-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow:
+        0 0 0 0 hsl(38 48% 62% / 0.22),
+        0 0 0 10px hsl(38 48% 62% / 0);
+    }
+    50% {
+      box-shadow:
+        0 0 0 4px hsl(38 48% 62% / 0.14),
+        0 0 0 16px hsl(38 48% 62% / 0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes scan-line {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}

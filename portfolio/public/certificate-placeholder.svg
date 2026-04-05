@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000" fill="none">
+  <rect width="1400" height="1000" fill="#0E1726"/>
+  <rect x="108" y="92" width="1184" height="816" rx="34" fill="#F5E9CF"/>
+  <rect x="138" y="122" width="1124" height="756" rx="24" fill="#FBF6EB" stroke="#C8A96B" stroke-width="3"/>
+  <rect x="214" y="202" width="972" height="40" rx="20" fill="#D6B26A" fill-opacity="0.9"/>
+  <rect x="304" y="300" width="792" height="20" rx="10" fill="#37475D" fill-opacity="0.72"/>
+  <rect x="356" y="356" width="688" height="16" rx="8" fill="#37475D" fill-opacity="0.4"/>
+  <rect x="264" y="462" width="872" height="2" fill="#C8A96B" fill-opacity="0.46"/>
+  <rect x="264" y="520" width="286" height="18" rx="9" fill="#C8A96B" fill-opacity="0.82"/>
+  <rect x="264" y="566" width="218" height="18" rx="9" fill="#56657A" fill-opacity="0.46"/>
+  <rect x="264" y="690" width="374" height="72" rx="18" fill="#13233A"/>
+  <circle cx="1020" cy="666" r="94" fill="#D6B26A" fill-opacity="0.22"/>
+  <path d="M1020 608L1038.9 646.3L1081.2 652.5L1050.6 682.3L1057.8 724.4L1020 704.5L982.2 724.4L989.4 682.3L958.8 652.5L1001.1 646.3L1020 608Z" fill="#C8A96B"/>
+  <text x="700" y="834" fill="#13233A" font-family="Arial, sans-serif" font-size="42" font-weight="700" letter-spacing="3" text-anchor="middle">REPLACE WITH CERTIFICATE IMAGE</text>
+</svg>

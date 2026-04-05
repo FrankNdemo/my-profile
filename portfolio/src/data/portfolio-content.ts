@@ -1,0 +1,480 @@
+export interface HeroContent {
+  firstName: string;
+  lastName: string;
+  profileImageSrc: string;
+  profileImageAlt: string;
+  specialties: string[];
+  summary: string;
+  primaryCtaLabel: string;
+  primaryCtaHref: string;
+  secondaryCtaLabel: string;
+  secondaryCtaHref: string;
+}
+
+export interface AboutContent {
+  sectionLabel: string;
+  title: string;
+  paragraphs: string[];
+  goals: string[];
+  languages: {
+    id: string;
+    name: string;
+    level: string;
+  }[];
+}
+
+export interface ExperienceItem {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  type: string;
+  responsibilities: string[];
+}
+
+export interface ExperienceContent {
+  sectionLabel: string;
+  title: string;
+  items: ExperienceItem[];
+}
+
+export interface ProjectLink {
+  id: string;
+  label: string;
+  url: string;
+}
+
+export interface ProjectItem {
+  id: string;
+  title: string;
+  category: string;
+  year: string;
+  description: string;
+  stack: string[];
+  imageSrc: string;
+  imageAlt: string;
+  links: ProjectLink[];
+}
+
+export interface ProjectsContent {
+  sectionLabel: string;
+  title: string;
+  intro: string;
+  items: ProjectItem[];
+}
+
+export interface TechnicalSkill {
+  id: string;
+  name: string;
+  level: number;
+}
+
+export interface SoftSkill {
+  id: string;
+  name: string;
+}
+
+export interface SkillsContent {
+  sectionLabel: string;
+  title: string;
+  technicalHeading: string;
+  softHeading: string;
+  technical: TechnicalSkill[];
+  soft: SoftSkill[];
+}
+
+export interface EducationStat {
+  id: string;
+  value: string;
+  label: string;
+}
+
+export interface EducationContent {
+  sectionLabel: string;
+  title: string;
+  universityName: string;
+  universityDegree: string;
+  universityPeriod: string;
+  universityBadge: string;
+  courseworkHeading: string;
+  coursework: string[];
+  secondarySchoolName: string;
+  secondarySchoolSubtitle: string;
+  secondarySchoolPeriod: string;
+  secondarySchoolDescription: string;
+  stats: EducationStat[];
+}
+
+export interface CertificationItem {
+  id: string;
+  title: string;
+  issuer: string;
+  issuedOn: string;
+  credentialId: string;
+  status: "Completed" | "Active" | "In Progress";
+  imageSrc: string;
+  imageAlt: string;
+  credentialUrl: string;
+  skills: string[];
+}
+
+export interface CertificationsContent {
+  sectionLabel: string;
+  title: string;
+  intro: string;
+  highlight: string;
+  items: CertificationItem[];
+}
+
+export interface ReferenceItem {
+  id: string;
+  name: string;
+  title: string;
+  company: string;
+  phone: string;
+  email: string;
+}
+
+export interface ContactContent {
+  sectionLabel: string;
+  title: string;
+  intro: string;
+  email: string;
+  phone: string;
+  location: string;
+  ctaLabel: string;
+  referencesHeading: string;
+  references: ReferenceItem[];
+}
+
+export interface PortfolioContent {
+  hero: HeroContent;
+  about: AboutContent;
+  experience: ExperienceContent;
+  projects: ProjectsContent;
+  skills: SkillsContent;
+  education: EducationContent;
+  certifications: CertificationsContent;
+  contact: ContactContent;
+}
+
+export const defaultPortfolioContent: PortfolioContent = {
+  hero: {
+    firstName: "Francis",
+    lastName: "Ndemo",
+    profileImageSrc: "",
+    profileImageAlt: "",
+    specialties: ["Networking", "Cybersecurity"],
+    summary:
+      "ICT Enthusiast bridging the gap between technical teams and stakeholders. Passionate about developing technology solutions that drive business efficiency.",
+    primaryCtaLabel: "Get in Touch",
+    primaryCtaHref: "#contact",
+    secondaryCtaLabel: "View Experience",
+    secondaryCtaHref: "#experience",
+  },
+  about: {
+    sectionLabel: "About Me",
+    title: "Professional Profile",
+    paragraphs: [
+      "Innovative ICT Enthusiast with a passion for developing and implementing technology solutions that drive business efficiency. I specialize in bridging the gap between technical teams and stakeholders, ensuring seamless project execution and optimal outcomes.",
+      "Skilled in network infrastructure, cybersecurity, and network security, I offer practical solutions that align with business goals. Committed to delivering exceptional support and continuously learning new skills to enhance operational performance.",
+    ],
+    goals: [
+      "Complete dissertation on data privacy and secure access control",
+      "Advance career in cybersecurity",
+      "Pursue Master's degree in Cybersecurity",
+    ],
+    languages: [
+      { id: "lang-english", name: "English", level: "Excellent" },
+      { id: "lang-kiswahili", name: "Kiswahili", level: "Excellent" },
+    ],
+  },
+  experience: {
+    sectionLabel: "Experience",
+    title: "Professional Experience",
+    items: [
+      {
+        id: "exp-kplc",
+        title: "ICT Industrial Attachment",
+        company: "Kenya Power & Lighting Company (KPLC)",
+        location: "South Nyanza Region",
+        period: "May 2025 - August 2025",
+        type: "Attachment",
+        responsibilities: [
+          "Set up IP phones, configured internet access for staff, and documented system changes",
+          "Installed switches and routers in server racks, replaced faulty SFP modules",
+          "Assisted in OLT and DWDM configuration and uplink setup",
+          "Performed data center maintenance including patch panels and structured cabling",
+          "Configured user emails and accounts, troubleshot printers, installed software updates",
+          "Handled network cable termination and testing, conducted network diagnostics",
+          "Participated in optical fiber operations: OTDR testing, VFL fault tracing, fiber fusion splicing",
+          "Supported UPS maintenance ensuring stable backup power continuity",
+        ],
+      },
+      {
+        id: "exp-equity-afia",
+        title: "Front Office Coordinator",
+        company: "Equity-Afia-Kisii",
+        location: "Kisii, Kenya",
+        period: "May 2024 - September 2024",
+        type: "Employment",
+        responsibilities: [
+          "Maintained data integrity and security in electronic patient record systems",
+          "Provided technical assistance for EMR systems and IT hardware troubleshooting",
+          "Assisted in digitizing patient records, improving data retrieval and workflow",
+          "Verified compliance with health data security regulations",
+          "Liaised with health insurance companies to facilitate claims processing",
+          "Monitored and reported on key performance indicators for data accuracy",
+          "Processed patient admissions and discharges in hospital information system",
+        ],
+      },
+    ],
+  },
+  projects: {
+    sectionLabel: "Selected Work",
+    title: "Project cards with image slots and attached links",
+    intro:
+      "Each project now supports a preview image plus multiple attached actions, so you can add live demos, repositories, case studies, or external product links without changing the layout.",
+    items: [
+      {
+        id: "project-network-monitor",
+        title: "Network Security Monitor",
+        category: "Cybersecurity",
+        year: "2026",
+        description:
+          "A real-time monitoring dashboard that helps identify suspicious traffic, surface alerts quickly, and support faster incident response for internal networks.",
+        stack: ["Python", "Packet Analysis", "Network Security"],
+        imageSrc: "/project-placeholder.svg",
+        imageAlt: "Placeholder preview for Network Security Monitor",
+        links: [
+          { id: "project-network-monitor-demo", label: "Attach Live Demo", url: "" },
+          { id: "project-network-monitor-github", label: "Attach GitHub Repository", url: "" },
+        ],
+      },
+      {
+        id: "project-asset-system",
+        title: "IT Asset Management System",
+        category: "Web Application",
+        year: "2025",
+        description:
+          "A web-based platform for managing hardware inventories, software assignments, and audit-ready asset records across an organization.",
+        stack: ["React", "Node.js", "Database Design"],
+        imageSrc: "/project-placeholder.svg",
+        imageAlt: "Placeholder preview for IT Asset Management System",
+        links: [
+          { id: "project-asset-system-live", label: "Attach Live System Link", url: "" },
+          { id: "project-asset-system-case-study", label: "Attach Case Study", url: "" },
+        ],
+      },
+      {
+        id: "project-file-transfer",
+        title: "Secure File Transfer Portal",
+        category: "Infrastructure",
+        year: "2025",
+        description:
+          "A secure document exchange portal focused on controlled access, encrypted file delivery, and a clear audit trail for sensitive transfers.",
+        stack: ["Encryption", "Access Control", "Full-Stack"],
+        imageSrc: "/project-placeholder.svg",
+        imageAlt: "Placeholder preview for Secure File Transfer Portal",
+        links: [
+          { id: "project-file-transfer-demo", label: "Attach Product Demo", url: "" },
+          { id: "project-file-transfer-source", label: "Attach Source Code", url: "" },
+        ],
+      },
+    ],
+  },
+  skills: {
+    sectionLabel: "Skills",
+    title: "Capabilities",
+    technicalHeading: "Technical Skills",
+    softHeading: "Soft Skills",
+    technical: [
+      { id: "skill-networking", name: "Networking (CCNA)", level: 90 },
+      { id: "skill-cybersecurity", name: "Cybersecurity", level: 85 },
+      { id: "skill-network-security", name: "Network Security", level: 85 },
+      { id: "skill-web-development", name: "Web Development", level: 75 },
+      { id: "skill-programming", name: "Programming", level: 70 },
+      { id: "skill-infrastructure", name: "IT Infrastructure", level: 80 },
+    ],
+    soft: [
+      { id: "soft-problem-solving", name: "Problem-Solving" },
+      { id: "soft-analytical-thinking", name: "Analytical Thinking" },
+      { id: "soft-teamwork", name: "Teamwork" },
+      { id: "soft-communication", name: "Communication" },
+      { id: "soft-attention-detail", name: "Attention to Detail" },
+      { id: "soft-learning", name: "Willingness to Learn" },
+    ],
+  },
+  education: {
+    sectionLabel: "Education",
+    title: "Education",
+    universityName: "Maseno University",
+    universityDegree: "B.SC. in Information and Communication Technology Management",
+    universityPeriod: "Expected Graduation: December 2026",
+    universityBadge: "Undergraduate",
+    courseworkHeading: "Key Coursework",
+    coursework: [
+      "Networking: CCNA - Network fundamentals, routing, switching, and network security",
+      "Network Security: Firewalls, VPNs, and intrusion detection systems",
+      "Web Development: Building responsive and interactive websites",
+      "Programming: Object-oriented programming, data structures, algorithms, Python",
+      "Database Management: SQL queries, database design, schema optimization",
+      "IT Infrastructure: System Administration, server management",
+    ],
+    secondarySchoolName: "Nyamira Boys High School",
+    secondarySchoolSubtitle: "Secondary Education",
+    secondarySchoolPeriod: "2018 - 2021",
+    secondarySchoolDescription:
+      "Completed high school diploma, building a foundation for lifelong learning with crucial skills in critical thinking, communication, and time management.",
+    stats: [
+      { id: "education-stat-years", value: "4+", label: "Years in Tech" },
+      { id: "education-stat-certs", value: "4", label: "Certifications" },
+    ],
+  },
+  certifications: {
+    sectionLabel: "Credentials",
+    title: "Certification cards ready for image uploads",
+    intro:
+      "This section now gives each certification a proper preview image area, key details, and a clear space for a verification link whenever you are ready to add one.",
+    highlight:
+      "This layout is ready for certificate images, verification URLs, and credential IDs, giving the section a more trusted and polished presentation.",
+    items: [
+      {
+        id: "cert-ccna",
+        title: "Cisco Certified Network Associate (CCNA)",
+        issuer: "Cisco",
+        issuedOn: "February 2024",
+        credentialId: "Add credential ID",
+        status: "Completed",
+        imageSrc: "/certificate-placeholder.svg",
+        imageAlt: "Placeholder certificate preview for CCNA",
+        credentialUrl: "",
+        skills: ["Routing", "Switching", "Network Fundamentals"],
+      },
+      {
+        id: "cert-enterprise-networking",
+        title: "Enterprise Networking, Security and Automation",
+        issuer: "Cisco",
+        issuedOn: "December 2024",
+        credentialId: "Add credential ID",
+        status: "Completed",
+        imageSrc: "/certificate-placeholder.svg",
+        imageAlt: "Placeholder certificate preview for Enterprise Networking, Security and Automation",
+        credentialUrl: "",
+        skills: ["Security Operations", "Automation", "Enterprise Networking"],
+      },
+      {
+        id: "cert-isc2-cc",
+        title: "Certified in Cybersecurity (CC)",
+        issuer: "(ISC)2",
+        issuedOn: "April 2026",
+        credentialId: "Add credential ID",
+        status: "In Progress",
+        imageSrc: "/certificate-placeholder.svg",
+        imageAlt: "Placeholder certificate preview for Certified in Cybersecurity",
+        credentialUrl: "",
+        skills: ["Security Principles", "Risk Management", "Governance"],
+      },
+      {
+        id: "cert-threat-management",
+        title: "Cyber Threat Management",
+        issuer: "Cisco",
+        issuedOn: "February 2026",
+        credentialId: "Add credential ID",
+        status: "Active",
+        imageSrc: "/certificate-placeholder.svg",
+        imageAlt: "Placeholder certificate preview for Cyber Threat Management",
+        credentialUrl: "",
+        skills: ["Threat Analysis", "Detection", "Response Planning"],
+      },
+    ],
+  },
+  contact: {
+    sectionLabel: "Get in Touch",
+    title: "Get in Touch",
+    intro: "Ready to collaborate on your next project or discuss opportunities? Feel free to reach out!",
+    email: "linkentnerg@gmail.com",
+    phone: "+254 114 470 441",
+    location: "40200, Kisii-Town, Kenya",
+    ctaLabel: "Send me a message",
+    referencesHeading: "Professional References",
+    references: [
+      {
+        id: "ref-buyaki",
+        name: "Ms. Christabel Buyaki",
+        title: "Medical Officer-In-Charge",
+        company: "Equity-Afia-Kisii Medical Center",
+        phone: "0701254148",
+        email: "",
+      },
+      {
+        id: "ref-oloo",
+        name: "Mr. Benard Oloo",
+        title: "ICT Engineer In-Charge",
+        company: "KPLC-Kisii",
+        phone: "0720888590",
+        email: "",
+      },
+      {
+        id: "ref-bett",
+        name: "Mr. Donald Bett",
+        title: "IT Support Expert",
+        company: "KPLC-Kisii",
+        phone: "0715695218",
+        email: "",
+      },
+    ],
+  },
+};
+
+export const hydratePortfolioContent = (content?: Partial<PortfolioContent> | null): PortfolioContent => {
+  const defaults = clonePortfolioContent(defaultPortfolioContent);
+  const source = (content ?? {}) as Partial<PortfolioContent>;
+
+  return {
+    ...defaults,
+    ...source,
+    hero: {
+      ...defaults.hero,
+      ...(source.hero ?? {}),
+    },
+    about: {
+      ...defaults.about,
+      ...(source.about ?? {}),
+    },
+    experience: {
+      ...defaults.experience,
+      ...(source.experience ?? {}),
+    },
+    projects: {
+      ...defaults.projects,
+      ...(source.projects ?? {}),
+    },
+    skills: {
+      ...defaults.skills,
+      ...(source.skills ?? {}),
+    },
+    education: {
+      ...defaults.education,
+      ...(source.education ?? {}),
+    },
+    certifications: {
+      ...defaults.certifications,
+      ...(source.certifications ?? {}),
+    },
+    contact: {
+      ...defaults.contact,
+      ...(source.contact ?? {}),
+      references: Array.isArray(source.contact?.references)
+        ? source.contact.references.map((reference) => ({
+            email: "",
+            ...reference,
+          }))
+        : defaults.contact.references,
+    },
+  };
+};
+
+export const clonePortfolioContent = (content: PortfolioContent) =>
+  JSON.parse(JSON.stringify(content)) as PortfolioContent;
