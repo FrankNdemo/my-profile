@@ -162,123 +162,125 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="grid items-center gap-14 lg:min-h-[calc(100vh-15rem)] lg:grid-cols-[1.05fr_0.95fr]"
         >
-          <div>
-            {visibleSpecialties.length > 0 && (
-              <motion.div
-                key={mobileSkillIndex}
-                initial={{ opacity: 0, x: activeMobileSkillDirection * 24, y: 8 }}
-                animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
-                transition={{
-                  opacity: { duration: 0.35 },
-                  x: { duration: 0.45, ease: "easeOut" },
-                  y: { duration: 3.2, ease: "easeInOut", repeat: Infinity },
+          <div className="relative">
+            <div className="pointer-events-none absolute inset-0 md:hidden">
+              <div
+                className="absolute bottom-28 right-[-1.5rem] top-[6.75rem] w-[58%] overflow-hidden"
+                style={{
+                  WebkitMaskImage:
+                    "radial-gradient(78% 88% at 72% 48%, black 0%, black 54%, transparent 100%)",
+                  maskImage: "radial-gradient(78% 88% at 72% 48%, black 0%, black 54%, transparent 100%)",
                 }}
-                className="mb-6 md:hidden"
               >
-                <div className="inline-flex min-h-[4.25rem] max-w-full items-center gap-3 rounded-[24px] border border-primary/15 bg-[linear-gradient(135deg,hsl(220_28%_14%_/_0.94),hsl(220_24%_10%_/_0.84))] px-4 py-3 shadow-[0_18px_45px_rgba(5,10,20,0.2)] backdrop-blur-md">
-                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-border/70 bg-background/45">
-                    <ActiveMobileSkillIcon className="h-4.5 w-4.5 text-primary" />
-                  </div>
-                  <div className="min-w-0">
-                    <p className="text-[10px] uppercase tracking-[0.28em] text-primary/75">Current Focus</p>
-                    <div className="mt-1 truncate font-mono text-sm text-foreground/90">
-                      <span>{typedMobileSkill}</span>
-                      <span className="terminal-cursor ml-1 text-primary">|</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-
-            <div
-              className="pointer-events-none relative float-right mb-6 ml-4 h-[19.5rem] w-[43%] overflow-hidden rounded-[30px] md:hidden"
-              style={{
-                WebkitMaskImage: "linear-gradient(180deg, transparent 0%, black 14%, black 84%, transparent 100%)",
-                maskImage: "linear-gradient(180deg, transparent 0%, black 14%, black 84%, transparent 100%)",
-              }}
-            >
-              <img
-                src={mobileHeroBackgroundImage}
-                alt=""
-                aria-hidden="true"
-                className="h-full w-full scale-[1.05] object-cover object-[60%_center] brightness-[0.36] contrast-[1.04] saturate-[0.9]"
-              />
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,10,18,0.18)_0%,rgba(6,10,18,0.52)_42%,rgba(6,10,18,0.96)_100%),linear-gradient(270deg,rgba(6,10,18,0)_0%,rgba(6,10,18,0.58)_45%,rgba(6,10,18,0.94)_100%)]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(255,255,255,0.08),transparent_24%),radial-gradient(circle_at_25%_50%,rgba(6,10,18,0)_0%,rgba(6,10,18,0.56)_58%,rgba(6,10,18,0.98)_100%)]" />
+                <div
+                  className="absolute inset-0 scale-[1.08] bg-cover bg-[62%_center] bg-no-repeat brightness-[0.42] contrast-[1.02] saturate-[0.88]"
+                  style={{ backgroundImage: `url(${mobileHeroBackgroundImage})` }}
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,10,18,0.98)_0%,rgba(6,10,18,0.9)_28%,rgba(6,10,18,0.52)_54%,rgba(6,10,18,0.62)_72%,rgba(6,10,18,0.96)_100%),linear-gradient(180deg,rgba(6,10,18,0.96)_0%,rgba(6,10,18,0.3)_20%,rgba(6,10,18,0.2)_70%,rgba(6,10,18,0.98)_100%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_28%,rgba(255,255,255,0.08),transparent_18%),radial-gradient(circle_at_82%_100%,rgba(6,10,18,0.9),transparent_42%)]" />
+              </div>
             </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="max-w-4xl text-5xl font-bold tracking-tight md:text-7xl lg:text-8xl"
-            >
-              <span className="text-foreground">{hero.firstName}</span>{" "}
-              <span className="gradient-text">{hero.lastName}</span>
-            </motion.h1>
-
-            {visibleSpecialties.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55 }}
-                className="mt-8 hidden flex-wrap items-center gap-3 md:flex"
-              >
-                {visibleSpecialties.map((specialty, index) => {
-                  const SpecialtyIcon = resolveSpecialtyIcon(specialty);
-                  const accentClass = index % 2 === 0 ? "text-primary" : "text-secondary";
-
-                  return (
-                    <div
-                      key={specialty}
-                      className="flex items-center gap-2 rounded-full border border-border/80 bg-card/85 px-4 py-2.5 shadow-sm"
-                    >
-                      <SpecialtyIcon className={`h-5 w-5 ${accentClass}`} />
-                      <span className="font-medium">{specialty}</span>
+            <div className="relative z-10">
+              {visibleSpecialties.length > 0 && (
+                <motion.div
+                  key={mobileSkillIndex}
+                  initial={{ opacity: 0, x: activeMobileSkillDirection * 24, y: 8 }}
+                  animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
+                  transition={{
+                    opacity: { duration: 0.35 },
+                    x: { duration: 0.45, ease: "easeOut" },
+                    y: { duration: 3.2, ease: "easeInOut", repeat: Infinity },
+                  }}
+                  className="mb-6 md:hidden"
+                >
+                  <div className="inline-flex min-h-[4.25rem] max-w-full items-center gap-3 rounded-[24px] border border-primary/15 bg-[linear-gradient(135deg,hsl(220_28%_14%_/_0.94),hsl(220_24%_10%_/_0.84))] px-4 py-3 shadow-[0_18px_45px_rgba(5,10,20,0.2)] backdrop-blur-md">
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-border/70 bg-background/45">
+                      <ActiveMobileSkillIcon className="h-4.5 w-4.5 text-primary" />
                     </div>
-                  );
-                })}
-              </motion.div>
-            )}
+                    <div className="min-w-0">
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-primary/75">Current Focus</p>
+                      <div className="mt-1 truncate font-mono text-sm text-foreground/90">
+                        <span>{typedMobileSkill}</span>
+                        <span className="terminal-cursor ml-1 text-primary">|</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
 
-            {hasValue(hero.summary) && (
-              <motion.p
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
-                className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+                transition={{ delay: 0.4 }}
+                className="max-w-[74%] text-5xl font-bold tracking-tight md:max-w-4xl md:text-7xl lg:text-8xl"
               >
-                {hero.summary}
-              </motion.p>
-            )}
+                <span className="text-foreground">{hero.firstName}</span>{" "}
+                <span className="gradient-text">{hero.lastName}</span>
+              </motion.h1>
 
-            {(showPrimaryCta || showSecondaryCta) && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.85 }}
-                className="clear-both mt-10 flex items-stretch gap-3 sm:flex-wrap sm:items-center sm:gap-4"
-              >
-                {showPrimaryCta && (
-                  <a
-                    href={hero.primaryCtaHref}
-                    className="group inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-5 py-4 text-center font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.02] sm:flex-none sm:px-8"
-                  >
-                    <span>{hero.primaryCtaLabel}</span>
-                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                  </a>
-                )}
-                {showSecondaryCta && (
-                  <a
-                    href={hero.secondaryCtaHref}
-                    className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-primary/35 bg-background/35 px-5 py-4 text-center font-semibold text-primary transition-all duration-300 hover:bg-primary/10 hover:box-glow sm:flex-none sm:px-8"
-                  >
-                    {hero.secondaryCtaLabel}
-                  </a>
-                )}
-              </motion.div>
-            )}
+              {visibleSpecialties.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.55 }}
+                  className="mt-8 hidden flex-wrap items-center gap-3 md:flex"
+                >
+                  {visibleSpecialties.map((specialty, index) => {
+                    const SpecialtyIcon = resolveSpecialtyIcon(specialty);
+                    const accentClass = index % 2 === 0 ? "text-primary" : "text-secondary";
 
+                    return (
+                      <div
+                        key={specialty}
+                        className="flex items-center gap-2 rounded-full border border-border/80 bg-card/85 px-4 py-2.5 shadow-sm"
+                      >
+                        <SpecialtyIcon className={`h-5 w-5 ${accentClass}`} />
+                        <span className="font-medium">{specialty}</span>
+                      </div>
+                    );
+                  })}
+                </motion.div>
+              )}
+
+              {hasValue(hero.summary) && (
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 }}
+                  className="mt-8 max-w-[78%] text-lg leading-relaxed text-muted-foreground md:max-w-2xl md:text-xl"
+                >
+                  {hero.summary}
+                </motion.p>
+              )}
+
+              {(showPrimaryCta || showSecondaryCta) && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.85 }}
+                  className="mt-10 flex items-stretch gap-3 sm:flex-wrap sm:items-center sm:gap-4"
+                >
+                  {showPrimaryCta && (
+                    <a
+                      href={hero.primaryCtaHref}
+                      className="group inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-5 py-4 text-center font-semibold text-primary-foreground transition-all duration-300 hover:scale-[1.02] sm:flex-none sm:px-8"
+                    >
+                      <span>{hero.primaryCtaLabel}</span>
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                    </a>
+                  )}
+                  {showSecondaryCta && (
+                    <a
+                      href={hero.secondaryCtaHref}
+                      className="inline-flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full border border-primary/35 bg-background/35 px-5 py-4 text-center font-semibold text-primary transition-all duration-300 hover:bg-primary/10 hover:box-glow sm:flex-none sm:px-8"
+                    >
+                      {hero.secondaryCtaLabel}
+                    </a>
+                  )}
+                </motion.div>
+              )}
+            </div>
           </div>
 
           <motion.div
