@@ -143,7 +143,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden pt-28 md:pt-32">
+    <section className="relative overflow-hidden pt-20 md:pt-24">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute left-[-8%] top-[-10%] h-[26rem] w-[26rem] rounded-full bg-primary/14 blur-3xl" />
         <div className="absolute right-[-8%] top-[10%] h-[18rem] w-[18rem] rounded-full bg-secondary/12 blur-3xl" />
