@@ -39,7 +39,7 @@ const resolveSpecialtyIcon = (specialty: string): LucideIcon => {
 
 const HeroSection = () => {
   const {
-    content: { hero, contact, projects, experience, certifications },
+    content: { hero, contact },
   } = usePortfolio();
   const visibleSpecialties = filterFilledStrings(hero.specialties);
   const showPrimaryCta = hasValue(hero.primaryCtaLabel) && hasValue(hero.primaryCtaHref);
@@ -56,25 +56,17 @@ const HeroSection = () => {
     `python profile.py --focus "${focusLabel}"`,
     'python profile.py --build "secure systems"',
   ];
-  const heroStats = [
-    {
-      label: "Projects",
-      value: String(projects.items.filter((project) => hasValue(project.title) && hasValue(project.description)).length).padStart(2, "0"),
-    },
-    {
-      label: "Roles",
-      value: String(experience.items.filter((item) => hasValue(item.title) || hasValue(item.company)).length).padStart(2, "0"),
-    },
-    {
-      label: "Credentials",
-      value: String(certifications.items.filter((item) => hasValue(item.title) && hasValue(item.issuer)).length).padStart(2, "0"),
-    },
-  ];
   const locationLabel = hasValue(contact.location) ? contact.location : "Kenya";
   const [typewriterLineIndex, setTypewriterLineIndex] = useState(0);
   const [typedLineText, setTypedLineText] = useState("");
   const [isDeletingTypedLine, setIsDeletingTypedLine] = useState(false);
+  const [mobileSkillIndex, setMobileSkillIndex] = useState(0);
+  const [typedMobileSkill, setTypedMobileSkill] = useState("");
+  const [isDeletingMobileSkill, setIsDeletingMobileSkill] = useState(false);
   const activeTypewriterLine = typewriterLines[typewriterLineIndex] ?? typewriterLines[0];
+  const activeMobileSkill = visibleSpecialties[mobileSkillIndex] ?? "";
+  const activeMobileSkillDirection = mobileSkillIndex % 2 === 0 ? -1 : 1;
+  const ActiveMobileSkillIcon = resolveSpecialtyIcon(activeMobileSkill || focusLabel);
 
   useEffect(() => {
     const delay = !isDeletingTypedLine && typedLineText === activeTypewriterLine
@@ -108,6 +100,44 @@ const HeroSection = () => {
     return () => window.clearTimeout(timeoutId);
   }, [activeTypewriterLine, isDeletingTypedLine, typedLineText, typewriterLines.length]);
 
+  useEffect(() => {
+    if (visibleSpecialties.length === 0 || !activeMobileSkill) {
+      setTypedMobileSkill("");
+      setIsDeletingMobileSkill(false);
+      return;
+    }
+
+    const delay = !isDeletingMobileSkill && typedMobileSkill === activeMobileSkill
+      ? 1200
+      : isDeletingMobileSkill && typedMobileSkill.length === 0
+        ? 260
+        : isDeletingMobileSkill
+          ? 30
+          : 72;
+
+    const timeoutId = window.setTimeout(() => {
+      if (!isDeletingMobileSkill) {
+        if (typedMobileSkill === activeMobileSkill) {
+          setIsDeletingMobileSkill(true);
+          return;
+        }
+
+        setTypedMobileSkill(activeMobileSkill.slice(0, typedMobileSkill.length + 1));
+        return;
+      }
+
+      if (typedMobileSkill.length > 0) {
+        setTypedMobileSkill(activeMobileSkill.slice(0, typedMobileSkill.length - 1));
+        return;
+      }
+
+      setIsDeletingMobileSkill(false);
+      setMobileSkillIndex((currentIndex) => (currentIndex + 1) % visibleSpecialties.length);
+    }, delay);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [activeMobileSkill, isDeletingMobileSkill, typedMobileSkill, visibleSpecialties.length]);
+
   const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -124,14 +154,41 @@ const HeroSection = () => {
         <div className="absolute top-2/3 right-0 w-1/4 circuit-line opacity-60" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 pb-16 pt-8 md:pb-20">
+      <div className="container relative z-10 mx-auto px-6 pb-8 pt-8 md:pb-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="grid items-center gap-14 lg:min-h-[calc(100vh-11rem)] lg:grid-cols-[1.05fr_0.95fr]"
+          className="grid items-center gap-14 lg:min-h-[calc(100vh-15rem)] lg:grid-cols-[1.05fr_0.95fr]"
         >
           <div>
+            {visibleSpecialties.length > 0 && (
+              <motion.div
+                key={mobileSkillIndex}
+                initial={{ opacity: 0, x: activeMobileSkillDirection * 24, y: 8 }}
+                animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
+                transition={{
+                  opacity: { duration: 0.35 },
+                  x: { duration: 0.45, ease: "easeOut" },
+                  y: { duration: 3.2, ease: "easeInOut", repeat: Infinity },
+                }}
+                className="mb-6 md:hidden"
+              >
+                <div className="inline-flex min-h-[4.25rem] max-w-full items-center gap-3 rounded-[24px] border border-primary/15 bg-[linear-gradient(135deg,hsl(220_28%_14%_/_0.94),hsl(220_24%_10%_/_0.84))] px-4 py-3 shadow-[0_18px_45px_rgba(5,10,20,0.2)] backdrop-blur-md">
+                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-2xl border border-border/70 bg-background/45">
+                    <ActiveMobileSkillIcon className="h-4.5 w-4.5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] uppercase tracking-[0.28em] text-primary/75">Current Focus</p>
+                    <div className="mt-1 truncate font-mono text-sm text-foreground/90">
+                      <span>{typedMobileSkill}</span>
+                      <span className="terminal-cursor ml-1 text-primary">|</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -147,7 +204,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55 }}
-                className="mt-8 flex flex-wrap items-center gap-3"
+                className="mt-8 hidden flex-wrap items-center gap-3 md:flex"
               >
                 {visibleSpecialties.map((specialty, index) => {
                   const SpecialtyIcon = resolveSpecialtyIcon(specialty);
@@ -204,22 +261,6 @@ const HeroSection = () => {
               </motion.div>
             )}
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-              className="mt-10 grid gap-4 sm:grid-cols-3"
-            >
-              {heroStats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-[24px] border border-border/70 bg-card/80 p-5 shadow-[0_18px_35px_rgba(5,10,20,0.18)]"
-                >
-                  <p className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">{stat.value}</p>
-                  <p className="mt-2 text-sm uppercase tracking-[0.22em] text-muted-foreground">{stat.label}</p>
-                </div>
-              ))}
-            </motion.div>
           </div>
 
           <motion.div
@@ -324,7 +365,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.15 }}
-          className="mx-auto mt-12 flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+          className="mx-auto mt-8 flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
